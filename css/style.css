@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+form {
+  font-size: 70%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 4px solid rgba(146, 169, 211, 0.527);
+  display: grid;
+  float: left;
+}
+
+h3 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  flex-basis: 100%;
+  height: 5rem;
+}
+
+input {
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  border: 1px solid rgb(146, 169, 211);
+  height: 1.5rem;
+}
+
+label {
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+select {
+  margin-top: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  border: 1px solid rgb(146, 169, 211);
+}
+
+.container {
+  font-family: system-ui;
+  color: #555;
+  background-color: #fff;
+  margin: 5%;
+  display: inline-block;
+  width: 100%;
+  padding-top: 0px;
+  margin-top: 0px
+}
+
+.images {
+  display: inline-block;
+  border: 10px solid rgb(240, 239, 239);
+  height: 150px;
+  margin: 1rem;
+  margin-top: 0px;
+}
+
+.imagesContainerDiv {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  min-height: 200px;
+  margin-left: 200px;
+  width: 70%;
+}
+
+.searchButton {
+  margin-top: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgb(255, 255, 255);
+  border-radius: 4px;
+  border: 1px solid rgb(146, 169, 211);
+}
+
+.searchButton:hover {
+  background-color: rgba(146, 169, 211, 0.075);
+  cursor: pointer;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="#" type="image/x-icon" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="js/script.js" defer></script>
+
+  <title>Slutprojekt</title>
+</head>
+
+<body>
+  <header></header>
+  <main class="container">
+    <form id="searchForm">
+      <label for="searchText">Sökterm:</label>
+      <input type="text" id="searchText" required />
+      <label for="number">Antal foton:</label>
+      <input type="number" value="1" id="number" min="1" max="499" required />
+
+      <select name="size" id="size" form="searchForm">
+        <option value="z" selected>Storlek</option>
+        <option value="m">Small</option>
+        <option value="z">Medium</option>
+        <option value="b">Large</option>
+      </select>
+
+      <select name="sort" id="sort" form="searchForm">
+        <option value="relevance">Välj sortering</option>
+        <option value="relevance">Relevans</option>
+        <option value="date-posted-asc">Datum stigande</option>
+        <option value="date-posted-desc">Datum fallande</option>
+        <option value="interestingness-asc">Interestingness stigande</option>
+        <option value="interestingness-desc">Interestingness fallande</option>
+      </select>
+
+      <select name="safeSearch" id="safeSearch" form="searchForm">
+        <option value="1">Safe search?</option>
+        <option value="1">Safe</option>
+        <option value="2">Moderate</option>
+        <option value="3">Restricted</option>
+      </select>
+
+      <button class="searchButton">Sök!</button>
+    </form>
+    <div class="imagesContainerDiv">
+    </div>
+  </main>
+</body>
+
+</html>
