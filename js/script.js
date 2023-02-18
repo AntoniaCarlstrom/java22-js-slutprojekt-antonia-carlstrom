@@ -25,20 +25,26 @@ form.addEventListener("submit", (event) => {
         throw "Fetch failed";
       }
     })
+
     .then((data) => {
-      console.log(data)
-      removeImagesAndErrors();
-      fetchImages(inputNumber, inputSize, data);
+      // Kollar att svaret inte innehåller 0 bilder, i så fall visas felmeddelande.
+      if (data.photos.photo.length === 0) {
+        displayError(`Inga bilder hittades för sökningen "${inputSearchText}", prova en annan sökterm!`);
+      } else {
+        // Tar bort gamla sökresultat och error-meddelanden
+        removeImagesAndErrors();
+        // Hämtar och visar bilderna
+        fetchImages(inputNumber, inputSize, data);
+      }
     })
     .catch((error) => {
+      // Tar bort gamla sökresultat och error-meddelanden
       removeImagesAndErrors();
-      const errorMessage = document.createElement('h3');
-      errorMessage.classList.add('errorMsg')
-      imagesContainerDiv.prepend(errorMessage);
-      errorMessage.innerText = `Fel har uppstått, vänligen försök igen! ${error}`;
+      // Visar felmeddelande om fel uppstått
+      displayError(`Fel har uppstått, vänligen försök igen! ${error}`);
     });
 })
-
+// Funktion för att ta bort gamla felmeddelanden och bilder.
 const removeImagesAndErrors = function () {
   const oldImages = document.getElementsByClassName("images");
   while (oldImages.length) {
@@ -49,14 +55,25 @@ const removeImagesAndErrors = function () {
     oldH3[0].remove();
   }
 }
+
+// Funktion för att visa bilderna som hämtats.
 const fetchImages = function (inputNumber, inputSize, data) {
+  // Loopar igenom svaret och skapar så många bilder som användaren valt.
   for (let i = 1; i <= inputNumber; i++) {
     let image = document.createElement("img");
     image.classList.add("images");
     imagesContainerDiv.append(image);
     image.src = `https://live.staticflickr.com/${data.photos.photo[i].server}/${data.photos.photo[i].id}_${data.photos.photo[i].secret}_${inputSize}.jpg`;
+    // Gör bilderna klickbara och öppnas i den hämtade storleken i ny tab.
     image.onclick = function () {
       window.open(this.src, '_blank');
     };
   }
 };
+// Funktion för felmeddelanden
+const displayError = function (errorMessageText) {
+  const errorMessage = document.createElement('h3');
+  errorMessage.classList.add('errorMsg')
+  imagesContainerDiv.prepend(errorMessage);
+  errorMessage.innerText = errorMessageText;
+}
